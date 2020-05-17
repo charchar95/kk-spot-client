@@ -25,6 +25,7 @@ class App extends React.Component {
     render () {
     return (
       <div className="container">
+    
           <header> 
             <h1>KK Spot</h1>
             <img src="https://i.imgur.com/U1zxNlO.png" width="50px" height="50px" alt="kk slider"></img>
@@ -43,9 +44,8 @@ class App extends React.Component {
                     </div>
                     )
             })}
-               
-               </main>
-        <footer className="nowplaying"> this is the footer</footer>
+               </main> 
+        <footer className="nowplaying"> <h3>this is the footer</h3></footer>
       </div>
        );
     }

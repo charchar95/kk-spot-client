@@ -69,14 +69,17 @@ main {
 
 footer {
   grid-area: footer;
+  height: 50px;
+  margin-top: -50px;
+  flex-shrink: 0;
 }
 
-/* * {
+* {
   border: green solid 1px;
-} */
+}
 
 @media (max-width: 768px) {
-  .container {
+  .app {
     grid-template-areas:
       "header"
       "nav"
@@ -124,4 +127,17 @@ footer {
   max-width: 200px;
   height: 170px;
   padding-bottom: 15px;
+}
+
+footer {
+  /* scroll-margin-bottom: 10rem; */
+  overflow: hidden;
+  background-color: rgb(57,109,185, .7);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0%;
+  width: 100%;
 }
