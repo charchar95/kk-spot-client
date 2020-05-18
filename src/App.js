@@ -1,12 +1,14 @@
 import React from 'react';
-
+import Icon from './Icons/Icon';
+import {constants} from './Icons/Constants';
 import './App.css';
 
 
 
 class App extends React.Component {
   state = {
-    songs: []
+    songs: [],
+    currentlyPlaying: []
   }
   componentDidMount(){
     this.getSongs()
@@ -21,7 +23,24 @@ class App extends React.Component {
   }
 
 
-  
+  // songClick(event){
+  //   this.setState({currentlyPlaying: event.target })
+  //   console.log("song click" + this.state.currentlyPlaying)
+    
+  // }
+
+  // playSong () {
+  //   // this.setState({ playSong:     })
+
+  //   return (
+  //     <footer>
+  //       <audio controls>
+  //           <source src={song.source} type="audio/mpeg"/> 
+  //         </audio>
+  //     </footer>
+  //   )
+  // }
+
     render () {
     return (
       <div className="container">
@@ -38,14 +57,20 @@ class App extends React.Component {
                   return (
                   <div className="box" key={song.id}>
                     
-                      <img src={song.album} width="100px" height="100px" alt={song.name}></img>
+                      <img src={song.album} width="100px" height="100px" alt={song.name} 
+                      // onClick={(event)=>this.songClick(event)}
+                      ></img>
                       <p>{song.name}</p>
                       
                     </div>
                     )
             })}
                </main> 
-        <footer className="nowplaying"> <h3>this is the footer</h3></footer>
+        <footer className="nowplaying"> 
+        <audio controls>
+  {/* //       <source src={this.state.song.source} type="audio/mpeg"/>  */}
+  //       </audio>
+        </footer>
       </div>
        );
     }
