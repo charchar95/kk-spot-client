@@ -1,18 +1,17 @@
 import React from 'react';
-import Icon from './Icons/Icon';
-import {constants} from './Icons/Constants';
 import './App.css';
-
-
+import Nav from './components/Nav';
+import { FaHeart } from 'react-icons/fa';
+import { FaHeartBroken } from 'react-icons/fa';
 
 class App extends React.Component {
   state = {
     songs: [],
-    currentlyPlaying: []
+    firstSong: []
   }
+
   componentDidMount(){
     this.getSongs()
-    
   }
 
   getSongs () {
@@ -22,24 +21,15 @@ class App extends React.Component {
     .catch(error => console.error(error))
   }
 
+  shuffleSong(){
+    let random = Math.floor(Math.random()*96)
+    console.log(random)
+    let oneSong = this.state.songs[random]
+    console.log(this.state.songs[random])
+    this.setState({ firstSong: oneSong })
+    console.log('shuffle song ' + this.state.firstSong)
+  }
 
-  // songClick(event){
-  //   this.setState({currentlyPlaying: event.target })
-  //   console.log("song click" + this.state.currentlyPlaying)
-    
-  // }
-
-  // playSong () {
-  //   // this.setState({ playSong:     })
-
-  //   return (
-  //     <footer>
-  //       <audio controls>
-  //           <source src={song.source} type="audio/mpeg"/> 
-  //         </audio>
-  //     </footer>
-  //   )
-  // }
 
     render () {
     return (
@@ -50,26 +40,46 @@ class App extends React.Component {
             <img src="https://i.imgur.com/U1zxNlO.png" width="50px" height="50px" alt="kk slider"></img>
             </header>
             <nav className="nav">
-              <h1>This is the nav</h1>
+              <Nav 
+              songs={this.state.songs}
+              />
+              <button onClick={()=> this.shuffleSong()}>Play A Song</button>
             </nav>
             <main className="content">
                 {this.state.songs.map(song => {
                   return (
                   <div className="box" key={song.id}>
                     
-                      <img src={song.album} width="100px" height="100px" alt={song.name} 
-                      // onClick={(event)=>this.songClick(event)}
-                      ></img>
+                      <img src={song.album} width="100px" height="100px" alt={song.name}></img>
                       <p>{song.name}</p>
-                      
+                      <FaHeart 
+                        size='17px'
+                        id='heart'
+                        style={{ 
+                        color: 'rgb(239,167,167)',
+                        margin: '5px' ,
+                        display: 'inline-block',
+                        verticalAlign: 'middle',
+                        paddingLeft: '5%'
+                      }} />
+                      <FaHeartBroken 
+                        size='17px'
+                        id='brokenheart'
+                        style={{ 
+                        color: 'rgb(239,167,167)',
+                        margin: '5px' ,
+                        display: 'inline-block',
+                        verticalAlign: 'middle'
+                      }}
+                      />
                     </div>
                     )
             })}
                </main> 
-        <footer className="nowplaying"> 
-        <audio controls>
-  {/* //       <source src={this.state.song.source} type="audio/mpeg"/>  */}
-  //       </audio>
+        <footer className="nowplaying">
+            <audio controls>
+                <source src={this.state.firstSong.source} type="audio/mpeg" autoPlay/> 
+              </audio>
         </footer>
       </div>
        );

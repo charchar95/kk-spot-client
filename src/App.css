@@ -129,13 +129,12 @@ main {
   flex: 1;
   max-width: 200px;
   height: 170px;
-  padding-bottom: 15px;
-  
+  padding-bottom: 30px;
 }
 
 footer {
   overflow: hidden;
-  background-color: rgb(57,109,185);
+  /* background-color: rgb(57,109,185); */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
