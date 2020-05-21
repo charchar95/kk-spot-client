@@ -3,16 +3,25 @@ import { FaPlayCircle, FaPauseCircle } from 'react-icons/fa';
 import ReactAudioPlayer from 'react-audio-player'
 
 class Footer extends Component { 
+    state = {
+        audio: new Audio(this.props.currentlyPlaying.source),
+        play: true
+    }
   
-    componentDidMount() {
-       this.audio = new Audio(this.props.currentlyPlaying)
-        this.audio.load()
-        // this.playAudio()
+   
+  componentDidMount() {
+    this.state.audio.addEventListener('ended', () => this.setState({ play: false }));
   }
-  
- pauseSong (){
-     this.audio.pause()
- }
+
+  componentWillUnmount() {
+    this.state.audio.removeEventListener('ended', () => this.setState({ play: false }));  
+  }
+
+  togglePlay = () => {
+    this.setState({ play: !this.state.play }, () => {
+      this.state.play ? this.state.audio.play() : this.state.audio.pause();
+    });
+  }
     render () {
         
         return (
@@ -23,7 +32,6 @@ class Footer extends Component {
                     src={this.props.currentlyPlaying.source}
                     autoPlay
                     controls
-                    
                 />
                 
                 <FaPlayCircle
@@ -36,7 +44,7 @@ class Footer extends Component {
                     }}
                 />
                   <FaPauseCircle
-                  onClick={this.pauseSong} 
+                  onClick={this.togglePlay} 
                     size='27px'
                     style={{ 
                     color: 'black',

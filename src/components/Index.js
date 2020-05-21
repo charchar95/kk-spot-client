@@ -8,7 +8,6 @@ class Index  extends React.Component {
     state = {
         likes: 0,
         currentlyPlaying: [],
-        playing: false
     }
 
     playSong (itemID) {
@@ -16,7 +15,7 @@ class Index  extends React.Component {
         .then(response => response.json())
         .then(json => this.setState({ 
             currentlyPlaying: json,
-            playing: true
+            play: true
         }))
         .catch(error => console.error(error))
     }
@@ -25,6 +24,7 @@ class Index  extends React.Component {
     render() {
         return(
             <>
+            {!this.props.filtered ? 
             <main className="content">
             {this.props.songs.map(song => {
               return (
@@ -72,10 +72,58 @@ class Index  extends React.Component {
                 )
         })}
            </main> 
+           : 
+           <main className="content">
+           {this.props.showSongs.map(song => {
+             return (
+             <div className="box" key={song.id}>
+                 <img src={song.album} width="100px" height="100px" alt={song.name}></img>
+                 <p>Likes: {this.state.likes}</p>
+                 <p>{song.name}</p>
+               <FaHeart
+                 type='submit'
+                 itemID={song.id}
+                 onClick={this.handleChange} 
+                 value={song.likes}
+                   size='17px'
+                   id='heart'
+                   style={{ 
+                   color: 'rgb(239,167,167)',
+                   margin: '5px' ,
+                   display: 'inline-block',
+                   verticalAlign: 'middle',
+                   paddingLeft: '5%'
+                 }} />
+                 <FaHeartBroken
+                 onClick={()=> this.updateLike(song.id)} 
+                   size='17px'
+                   id='brokenheart'
+                   style={{ 
+                   color: 'rgb(239,167,167)',
+                   margin: '5px' ,
+                   display: 'inline-block',
+                   verticalAlign: 'middle'
+                 }}
+                 />
+               <FaPlay
+                   itemID={song.id}
+                   onClick={()=> this.playSong(song.id)} 
+                   size='17px'
+                   style={{ 
+                   color: 'rgb(239,167,167)',
+                   margin: '5px' ,
+                   display: 'inline-block',
+                   verticalAlign: 'middle'
+                 }}
+                 />
+               </div>
+               )
+       })}
+          </main> 
+           }
     <Footer 
         currentlyPlaying={this.state.currentlyPlaying}
         setCurrentSong={this.setCurrentSong}
-        playing={this.state.playing}
         />
 
     </>

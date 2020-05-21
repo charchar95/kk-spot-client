@@ -8,12 +8,21 @@ import Index from './components/Index';
 class App extends React.Component {
   state = {
     songs: [],
-    firstSong: []
+    showSongs: [], 
+    filtered: false,
   }
 
   componentDidMount(){
     this.getSongs()
   }
+
+handleDropDown = (arr)=> {
+    this.setState({ 
+      showSongs: arr, 
+      filtered: true
+    });
+}
+
 
   getSongs () {
     fetch('http://localhost:3000/songs')
@@ -22,35 +31,7 @@ class App extends React.Component {
     .catch(error => console.error(error))
   }
 
-  shuffleSong(){
-    let random = Math.floor(Math.random()*96)
-    console.log(random)
-    let oneSong = this.state.songs[random]
-    console.log(this.state.songs[random])
-    this.setState({ firstSong: oneSong })
-    console.log('shuffle song ' + this.state.firstSong)
-  } 
 
-  updateLike (id, event) {
-    console.log("clicked");
-    // event.preventDefault()
-    fetch(`http://localhost:3000/songs/${id}`, {
-      body: JSON.stringify({
-        likes: +1
-      }),
-      method: 'PUT',
-   headers: {
-    "Content-Type": "application/json"
-   }
-  })
-   .then(updatedSong => {
-     this.getSongs()
-    //  this.setState({
-    //   editVisible: false,  
-    //  })
-   })
-   .catch(error => console.log(error))
-    }
 
 
     render () {
@@ -64,12 +45,15 @@ class App extends React.Component {
             <nav className="nav">
               <Nav 
               songs={this.state.songs}
+              handleDropDown={this.handleDropDown}
               />
             </nav>
            <Index 
            songs={this.state.songs}
+           showSongs={this.state.showSongs}
            updateLike={this.updateLike}
            getSongs={this.getSongs}
+           filtered={this.state.filtered}
            />
   
       </div>
