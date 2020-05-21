@@ -20,7 +20,51 @@ class Index  extends React.Component {
         .catch(error => console.error(error))
     }
 
+    // updateLike (id, event) {
+    //     console.log("clicked");
+    //     // event.preventDefault()
+    //     fetch(`http://localhost:3000/songs/${id}`, {
+    //       body: JSON.stringify({
+    //         likes: +1
+    //       }),
+    //       method: 'PUT',
+    //    headers: {
+    //     'Content-Type': 'application/json'
+    //    }
+    //   })
+    //    .then(updatedSong => {
+    //      this.props.getSongs()
+    //     //  this.setState({
+    //     //   editVisible: false,  
+    //     //  })
+    //    })
+    //    .catch(error => console.log(error))
+    //     }
     
+        updateLike = (id) => {
+            // event.preventDefault()
+            console.log('Handle Update')
+            fetch(`http://localhost:3000/songs/${id}`, {
+              body: JSON.stringify({
+                  likes: +1
+              }),
+              method: 'PUT',
+           headers: {
+             'Accept': 'application/json, text/plain, */*',
+             'Content-Type': 'application/json'
+           }
+          })
+           .then(updatedCat => {
+             this.props.getSongs()
+            //  this.setState({
+            //   editVisible: false,  
+            //  
+           })
+           .catch(error => console.log(error))
+          }
+        
+
+        
     render() {
         return(
             <>
@@ -32,10 +76,11 @@ class Index  extends React.Component {
                   <img src={song.album} width="100px" height="100px" alt={song.name}></img>
                   <p>Likes: {this.state.likes}</p>
                   <p>{song.name}</p>
+                  <form>
                 <FaHeart
                   type='submit'
                   itemID={song.id}
-                  onClick={this.handleChange} 
+                 onClick={()=> this.updateLike(song.id)} 
                   value={song.likes}
                     size='17px'
                     id='heart'
@@ -46,6 +91,7 @@ class Index  extends React.Component {
                     verticalAlign: 'middle',
                     paddingLeft: '5%'
                   }} />
+                </form>
                   <FaHeartBroken
                   onClick={()=> this.updateLike(song.id)} 
                     size='17px'

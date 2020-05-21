@@ -193,10 +193,12 @@ filterGenreClassical = ()=> {
 }
 
 
+
   render() { 
 
     return (
-    <div  className="dropdown"  >
+    <div  className="dropdown">
+        
          <div className="mood" onClick={this.showDropdownMenuMood}>Pick A Mood</div>
 
           { this.state.displayMenuMood ? (

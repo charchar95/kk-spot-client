@@ -19,7 +19,7 @@ class Footer extends Component {
 
   togglePlay = () => {
     this.setState({ play: !this.state.play }, () => {
-      this.state.play ? this.state.audio.play() : this.state.audio.pause();
+      this.state.play ? this.state.audio.onPlay() : this.state.audio.onPause();
     });
   }
     render () {
@@ -27,13 +27,12 @@ class Footer extends Component {
         return (
             <>
             <footer className="nowplaying">
-                <img src={this.props.currentlyPlaying.album} width="50px" height="50px" alt={this.props.currentlyPlaying.name}></img>
+                {/* <img src={this.props.currentlyPlaying.album} width="50px" height="50px" alt={this.props.currentlyPlaying.name}></img>
                  <ReactAudioPlayer
                     src={this.props.currentlyPlaying.source}
                     autoPlay
                     controls
-                />
-                
+                /> */}
                 <FaPlayCircle
                     size='27px'
                     style={{ 
