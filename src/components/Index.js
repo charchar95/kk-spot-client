@@ -11,59 +11,18 @@ class Index  extends React.Component {
     }
 
     playSong (itemID) {
+      console.log(itemID)
         fetch(`http://localhost:3000/songs/${itemID}`)
         .then(response => response.json())
         .then(json => this.setState({ 
             currentlyPlaying: json,
-            play: true
+            nextSongId: itemID,
+            play: true,
         }))
         .catch(error => console.error(error))
     }
 
-    // updateLike (id, event) {
-    //     console.log("clicked");
-    //     // event.preventDefault()
-    //     fetch(`http://localhost:3000/songs/${id}`, {
-    //       body: JSON.stringify({
-    //         likes: +1
-    //       }),
-    //       method: 'PUT',
-    //    headers: {
-    //     'Content-Type': 'application/json'
-    //    }
-    //   })
-    //    .then(updatedSong => {
-    //      this.props.getSongs()
-    //     //  this.setState({
-    //     //   editVisible: false,  
-    //     //  })
-    //    })
-    //    .catch(error => console.log(error))
-    //     }
-    
-        updateLike = (id) => {
-            // event.preventDefault()
-            console.log('Handle Update')
-            fetch(`http://localhost:3000/songs/${id}`, {
-              body: JSON.stringify({
-                  likes: +1
-              }),
-              method: 'PUT',
-           headers: {
-             'Accept': 'application/json, text/plain, */*',
-             'Content-Type': 'application/json'
-           }
-          })
-           .then(updatedCat => {
-             this.props.getSongs()
-            //  this.setState({
-            //   editVisible: false,  
-            //  
-           })
-           .catch(error => console.log(error))
-          }
-        
-
+ 
         
     render() {
         return(
@@ -72,6 +31,7 @@ class Index  extends React.Component {
             <main className="content">
             {this.props.songs.map(song => {
               return (
+
               <div className="box" key={song.id}>
                   <img src={song.album} width="100px" height="100px" alt={song.name}></img>
                   <p>Likes: {this.state.likes}</p>
@@ -170,6 +130,10 @@ class Index  extends React.Component {
     <Footer 
         currentlyPlaying={this.state.currentlyPlaying}
         setCurrentSong={this.setCurrentSong}
+        onDone={this.onSongDone}
+        nextSongId={this.state.nextSongId}
+        // onNext={this.onPlayerNext}
+        // onPrev={this.onPlayerPrev}
         />
 
     </>

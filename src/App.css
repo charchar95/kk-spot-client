@@ -59,12 +59,18 @@ header {
 }
 
 nav {
-  display: flex;
-  flex-wrap: wrap;
   grid-area: nav;
   margin-left: 0.5rem;
-  justify-content: center;
-  flex-direction: space-between;
+  /* justify-content: center;
+  flex-direction: space-around; */
+}
+
+.home {
+  display: 'block';
+}
+
+.mood {
+  padding-bottom: 10px;
 }
 
 main {
@@ -129,7 +135,7 @@ main {
   flex: 1;
   max-width: 200px;
   height: 170px;
-  padding-bottom: 60px;
+  padding-bottom: 200px;
 }
 
 footer {

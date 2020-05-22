@@ -8,7 +8,19 @@ class Footer extends Component {
         play: true
     }
   
-   
+    playNext () {
+     let nextSong = this.props.nextSongId + 1
+      console.log(nextSong)
+      // fetch(`http://localhost:3000/songs/${nextSong}`)
+      //   .then(response => response.json())
+      //   .then(json => this.setState({ 
+      //       currentlyPlaying: json,
+      //       play: true
+      //   }))
+      //   .catch(error => console.error(error))
+    }
+
+
   componentDidMount() {
     this.state.audio.addEventListener('ended', () => this.setState({ play: false }));
   }
@@ -26,14 +38,16 @@ class Footer extends Component {
         
         return (
             <>
+                 <button  onClick={this.playNext}>next</button>
             <footer className="nowplaying">
-                {/* <img src={this.props.currentlyPlaying.album} width="50px" height="50px" alt={this.props.currentlyPlaying.name}></img>
+                <img src={this.props.currentlyPlaying.album} width="50px" height="50px" alt={this.props.currentlyPlaying.name}></img>
                  <ReactAudioPlayer
                     src={this.props.currentlyPlaying.source}
                     autoPlay
                     controls
-                /> */}
+                />
                 <FaPlayCircle
+                  onClick={this.playNext} 
                     size='27px'
                     style={{ 
                     color: 'black',
@@ -43,7 +57,7 @@ class Footer extends Component {
                     }}
                 />
                   <FaPauseCircle
-                  onClick={this.togglePlay} 
+                  onClick={this.playNext} 
                     size='27px'
                     style={{ 
                     color: 'black',
