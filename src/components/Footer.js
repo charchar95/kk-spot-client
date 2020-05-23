@@ -1,7 +1,5 @@
 import React, {Component, } from 'react';
 import { FaPlayCircle, FaPauseCircle, FaForward, FaBackward } from 'react-icons/fa';
-// import ReactAudioPlayer from 'react-audio-player'
-
 
 class Footer extends Component { 
   constructor(props) {
@@ -15,11 +13,12 @@ class Footer extends Component {
     this.pauseAudio = this.pauseAudio.bind(this);
   }
 
-  
-
   playNext () {
     console.log("play next " + this.props.nextSongId)
     let newId = this.props.nextSongId + 1
+    if (newId === 96) {
+      newId = 1
+    }
     console.log("newId is "+ newId)
    this.props.fetchNext(newId)
   }
@@ -27,6 +26,9 @@ class Footer extends Component {
   playPrevious () {
     console.log("play previous " + this.props.nextSongId)
     let newId = this.props.nextSongId - 1
+    if (newId === 0) {
+      newId = 95
+    }
     console.log("newId is "+ newId)
    this.props.fetchPrevious(newId)
   }
