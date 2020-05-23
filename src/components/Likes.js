@@ -5,7 +5,7 @@ class Likes extends Component {
     state = {
         likes: 0,
     }
-    
+
     handleVote(type) {
         this.setState(prevState => ({
             likes: type === "add" ? prevState.likes + 1 : prevState.likes - 1
@@ -32,12 +32,11 @@ class Likes extends Component {
                     size='17px'
                     id='brokenheart'
                     style={{ 
-                    color: 'rgb(239,167,167)',
-                    margin: '5px' ,
-                    display: 'inline-block',
-                    verticalAlign: 'middle'
-                  }}
-                  />
+                        color: 'rgb(239,167,167)',
+                        margin: '5px' ,
+                        display: 'inline-block',
+                        verticalAlign: 'middle'
+                    }} />
                 <p value={ likes }> Likes: { likes }</p>
             </>
         )

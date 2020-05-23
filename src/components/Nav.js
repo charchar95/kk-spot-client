@@ -10,6 +10,14 @@ class Nav extends Component {
         let homeSongs = this.props.songs
         this.props.handleDropDown(homeSongs)
     }
+
+
+    filterlikes = ()=> {
+        let likes = this.props.songs.filter(song => song.likes === 'Classical') 
+        this.props.handleDropDown(likes)
+        console.log(likes)
+    }
+
     render () {
         return (
             <>
@@ -25,6 +33,7 @@ class Nav extends Component {
           
           />  
           <h2 onClick={this.returnHome}>Home</h2> 
+          <h2 onClick={this.returnHome}>Top Liked Songs</h2> 
           </div>
             <Dropdown
                 songs={this.props.songs}
