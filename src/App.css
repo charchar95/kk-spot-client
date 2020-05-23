@@ -58,6 +58,12 @@ header {
   align-items: center;
 }
 
+header > h1 {
+  padding-left: 7%
+}
+header > img {
+  padding-right: 3%
+}
 nav {
   grid-area: nav;
   margin-left: 0.5rem;
@@ -191,4 +197,9 @@ footer {
 
 nav, .image {
   cursor: pointer;
+}
+
+.open {
+  display: flex;
+  flex: -1;
 }

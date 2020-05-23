@@ -72,11 +72,11 @@ fetchNext= (newId)=> {
                       }}
                     />
                   </div>
-      
+                  <button className="open" onClick={() => this.getModal(song.id)}> See More </button>
                  <Likes />
                   <p>{song.name}</p>
         <div>
-          <button  onClick={() => this.getModal(song.id)}> See More </button>
+        
               <Modal 
                   show={this.state.showModal === song.id}    
                   onHide={() => this.hideModal(song.id)}
@@ -106,10 +106,11 @@ fetchNext= (newId)=> {
                   }}
                   />
                  </div>
+                 <button  onClick={() => this.getModal(song.id)}> See More </button>
                   <Likes /> 
                   <p>{song.name}</p>
               <div>
-                  <button  onClick={() => this.getModal(song.id)}> See More </button>
+                 
               <Modal 
                   show={this.state.showModal === song.id}    
                   onHide={() => this.hideModal(song.id)}

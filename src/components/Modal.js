@@ -13,7 +13,7 @@ class Modal extends Component {
             <h1>{this.props.name}</h1>
             <h2>Genre: {this.props.genre}</h2>
             <h2>Mood: {this.props.mood}</h2>
-            <button onClick={this.props.onHide}>Close Modal</button>
+            <button onClick={this.props.onHide}>X</button>
           </div>
         )}
       </>
