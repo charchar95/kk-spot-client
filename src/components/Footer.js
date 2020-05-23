@@ -1,53 +1,81 @@
-import React, {Component} from 'react';
-import { FaPlayCircle, FaPauseCircle } from 'react-icons/fa';
-import ReactAudioPlayer from 'react-audio-player'
+import React, {Component, } from 'react';
+import { FaPlayCircle, FaPauseCircle, FaForward, FaBackward } from 'react-icons/fa';
+// import ReactAudioPlayer from 'react-audio-player'
+
 
 class Footer extends Component { 
-    state = {
-        audio: new Audio(this.props.currentlyPlaying.source),
-        play: true
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      playing: false,
+      currentTrackIndex: 0
+    };
+    this.handleClick = this.handleClick.bind(this);
+    this.playAudio = this.playAudio.bind(this);
+    this.pauseAudio = this.pauseAudio.bind(this);
+  }
+
   
-    playNext () {
-     let nextSong = this.props.nextSongId + 1
-      console.log(nextSong)
-      // fetch(`http://localhost:3000/songs/${nextSong}`)
-      //   .then(response => response.json())
-      //   .then(json => this.setState({ 
-      //       currentlyPlaying: json,
-      //       play: true
-      //   }))
-      //   .catch(error => console.error(error))
+
+  playNext () {
+    console.log("play next " + this.props.nextSongId)
+    let newId = this.props.nextSongId + 1
+    console.log("newId is "+ newId)
+   this.props.fetchNext(newId)
+  }
+
+  playPrevious () {
+    console.log("play previous " + this.props.nextSongId)
+    let newId = this.props.nextSongId - 1
+    console.log("newId is "+ newId)
+   this.props.fetchPrevious(newId)
+  }
+
+  playAudio(){
+    this.audioElement.play();
+  }
+  pauseAudio(){
+    this.audioElement.pause();
+  }
+ 
+  handleClick(e) {
+    switch (e.target.id) {
+      case "play":
+        this.setState((state, props) => {
+          let currentTrackIndex = state.currentTrackIndex;
+          if (currentTrackIndex === 0) {
+            currentTrackIndex = 1;
+          }
+          return {
+            playing: true,
+            currentTrackIndex: currentTrackIndex
+          };
+        },this.playAudio);
+        break;
+      case "pause":
+        this.setState({ playing: false },this.pauseAudio);
+        break;
+      default:
+        break;
     }
-
-
-  componentDidMount() {
-    this.state.audio.addEventListener('ended', () => this.setState({ play: false }));
   }
 
-  componentWillUnmount() {
-    this.state.audio.removeEventListener('ended', () => this.setState({ play: false }));  
-  }
-
-  togglePlay = () => {
-    this.setState({ play: !this.state.play }, () => {
-      this.state.play ? this.state.audio.onPlay() : this.state.audio.onPause();
-    });
-  }
     render () {
         
         return (
             <>
-                 <button  onClick={this.playNext}>next</button>
             <footer className="nowplaying">
                 <img src={this.props.currentlyPlaying.album} width="50px" height="50px" alt={this.props.currentlyPlaying.name}></img>
-                 <ReactAudioPlayer
-                    src={this.props.currentlyPlaying.source}
-                    autoPlay
+                 <audio 
+                 ref={(audio)=>{this.audioElement = audio}}
+                 className='audio-element'
+                     autoPlay
                     controls
-                />
-                <FaPlayCircle
-                  onClick={this.playNext} 
+                    src={this.props.currentlyPlaying.source} >
+                </audio>
+              <FaPlayCircle
+                id="play"
+                  onClick={this.handleClick} 
                     size='27px'
                     style={{ 
                     color: 'black',
@@ -56,8 +84,9 @@ class Footer extends Component {
                     verticalAlign: 'middle'
                     }}
                 />
-                  <FaPauseCircle
-                  onClick={this.playNext} 
+              <FaPauseCircle
+                  id="pause"
+                  onClick={this.handleClick} 
                     size='27px'
                     style={{ 
                     color: 'black',
@@ -66,6 +95,28 @@ class Footer extends Component {
                     verticalAlign: 'middle'
                     }}
                 />
+              <FaBackward
+                  onClick={()=> this.playPrevious(this.props.nextSongId)}
+                    size='27px'
+                    style={{ 
+                    color: 'black',
+                    margin: '5px' ,
+                    display: 'inline-block',
+                    verticalAlign: 'middle'
+                    }}
+                    />
+              <FaForward
+                id="next"
+                  onClick={()=> this.playNext(this.props.nextSongId)}
+                    size='27px'
+                    style={{ 
+                    color: 'black',
+                    margin: '5px' ,
+                    display: 'inline-block',
+                    verticalAlign: 'middle'
+                    }}
+                    />
+            
             </footer>
          </>
         )

@@ -33,7 +33,6 @@ class Nav extends Component {
           
           />  
           <h2 onClick={this.returnHome}>Home</h2> 
-          <h2 onClick={this.returnHome}>Top Liked Songs</h2> 
           </div>
             <Dropdown
                 songs={this.props.songs}

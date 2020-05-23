@@ -8,6 +8,7 @@ class Index  extends React.Component {
     state = {
         likes: 0,
         currentlyPlaying: [],
+        nextSongId: []
     }
 
     playSong (itemID) {
@@ -17,13 +18,30 @@ class Index  extends React.Component {
         .then(json => this.setState({ 
             currentlyPlaying: json,
             nextSongId: itemID,
-            play: true,
         }))
         .catch(error => console.error(error))
     }
 
- 
-    
+fetchNext= (newId)=> {
+    fetch(`http://localhost:3000/songs/${newId}`)
+    .then(response => response.json())
+    .then(json => this.setState({ 
+        currentlyPlaying: json,
+        nextSongId: newId
+    }))
+    .catch(error => console.error(error))
+  }
+
+  fetchPrevious= (newId)=> {
+    fetch(`http://localhost:3000/songs/${newId}`)
+    .then(response => response.json())
+    .then(json => this.setState({ 
+        currentlyPlaying: json,
+        nextSongId: newId
+    }))
+    .catch(error => console.error(error))
+  }
+
     render() {
         return(
             <>
@@ -78,6 +96,8 @@ class Index  extends React.Component {
     <Footer 
         currentlyPlaying={this.state.currentlyPlaying}
         nextSongId={this.state.nextSongId}
+        fetchNext={this.fetchNext}
+        fetchPrevious={this.fetchPrevious}
         />
 
     </>

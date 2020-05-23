@@ -31,23 +31,6 @@ handleDropDown = (arr)=> {
     .catch(error => console.error(error))
   }
 
-  handleUpdate = (event, formInputs) => {
-    event.preventDefault()
-    console.log('in it to win it')
-    fetch(`/songs/${formInputs.id}`, {
-      body: JSON.stringify(formInputs),
-      method: 'PUT',
-   headers: {
-     'Accept': 'application/json, text/plain, */*',
-     'Content-Type': 'application/json'
-   }
-  })
-   .then(updatedSong => {
-     // go wild
-     this.getSongs()
-   })
-   .catch(error => console.log(error))
-  }
 
 
     render () {
@@ -67,10 +50,8 @@ handleDropDown = (arr)=> {
            <Index 
            songs={this.state.songs}
            showSongs={this.state.showSongs}
-           updateLike={this.updateLike}
-           getSongs={this.getSongs}
            filtered={this.state.filtered}
-           handleUpdate={this.handleDropDown}
+           
            />
   
       </div>
