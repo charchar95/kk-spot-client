@@ -25,7 +25,8 @@ class Likes extends Component {
                         margin: '5px' ,
                         display: 'inline-block',
                         verticalAlign: 'middle',
-                        paddingLeft: '5%'
+                        paddingLeft: '5%',
+                        cursor: 'pointer'
                         }} /> 
                 <FaHeartBroken
                   onClick={ this.handleVote.bind(this, 'min') }
@@ -35,7 +36,8 @@ class Likes extends Component {
                         color: 'rgb(239,167,167)',
                         margin: '5px' ,
                         display: 'inline-block',
-                        verticalAlign: 'middle'
+                        verticalAlign: 'middle',
+                        cursor: 'pointer'
                     }} />
                 <p value={ likes }> Likes: { likes }</p>
             </>

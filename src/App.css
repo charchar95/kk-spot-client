@@ -187,3 +187,8 @@ footer {
   margin-top: -50px;
   flex-shrink: 0;
 }
+
+
+nav, .image {
+  cursor: pointer;
+}
