@@ -72,9 +72,19 @@ class Footer extends Component {
                  ref={(audio)=>{this.audioElement = audio}}
                  className='audio-element'
                      autoPlay
-                    controls
+                    // controls
                     src={this.props.currentlyPlaying.source} >
                 </audio>
+                <FaBackward
+                  onClick={()=> this.playPrevious(this.props.nextSongId)}
+                    size='27px'
+                    style={{ 
+                    color: 'black',
+                    margin: '5px' ,
+                    display: 'inline-block',
+                    verticalAlign: 'middle'
+                    }}
+                    />
               <FaPlayCircle
                 id="play"
                   onClick={this.handleClick} 
@@ -97,16 +107,6 @@ class Footer extends Component {
                     verticalAlign: 'middle'
                     }}
                 />
-              <FaBackward
-                  onClick={()=> this.playPrevious(this.props.nextSongId)}
-                    size='27px'
-                    style={{ 
-                    color: 'black',
-                    margin: '5px' ,
-                    display: 'inline-block',
-                    verticalAlign: 'middle'
-                    }}
-                    />
               <FaForward
                 id="next"
                   onClick={()=> this.playNext(this.props.nextSongId)}

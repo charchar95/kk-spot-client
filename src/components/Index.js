@@ -3,12 +3,14 @@ import '../App.css';
 import { FaPlay } from 'react-icons/fa';
 import Footer from '../components/Footer'
 import Likes from '../components/Likes'
+import Modal from '../components/Modal'
 
 class Index  extends React.Component {
     state = {
         likes: 0,
         currentlyPlaying: [],
-        nextSongId: []
+        nextSongId: [],
+        showModal: 0
     }
 
     playSong (itemID) {
@@ -42,6 +44,14 @@ fetchNext= (newId)=> {
     .catch(error => console.error(error))
   }
 
+  getModal = value => {
+    this.setState({ showModal: value });
+  };
+
+  hideModal = value => {
+    this.setState({ showModal: 0 });
+  };
+
     render() {
         return(
             <>
@@ -62,10 +72,21 @@ fetchNext= (newId)=> {
                       }}
                     />
                   </div>
-                
+      
                  <Likes />
                   <p>{song.name}</p>
-                </div>
+        <div>
+          <button  onClick={() => this.getModal(song.id)}> See More </button>
+              <Modal 
+                  show={this.state.showModal === song.id}    
+                  onHide={() => this.hideModal(song.id)}
+                  img={song.album}
+                  name={song.name}
+                  genre={song.genre}
+                  mood={song.mood}
+                      />
+          </div>
+    </div>
                 )
         })}
            </main> 
@@ -85,12 +106,25 @@ fetchNext= (newId)=> {
                   }}
                   />
                  </div>
-                 <p>{song.name}</p>
-                 <Likes />
-               
+                  <Likes /> 
+                  <p>{song.name}</p>
+              <div>
+                  <button  onClick={() => this.getModal(song.id)}> See More </button>
+              <Modal 
+                  show={this.state.showModal === song.id}    
+                  onHide={() => this.hideModal(song.id)}
+                  img={song.album}
+                  name={song.name}
+                  genre={song.genre}
+                  mood={song.mood}
+                      />
+          </div>
+   
                </div>
                )
        })}
+ 
+
           </main> 
            }
     <Footer 
