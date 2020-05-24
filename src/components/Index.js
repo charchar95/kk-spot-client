@@ -52,7 +52,20 @@ fetchNext= (newId)=> {
     this.setState({ showModal: 0 });
   };
 
-    render() {
+  handleShuffle = (arr)=> {
+   let itemID = arr[0].id
+    console.log(itemID)
+    fetch(`http://localhost:3000/songs/${itemID}`)
+    .then(response => response.json())
+    .then(json => this.setState({ 
+        currentlyPlaying: json,
+        nextSongId: itemID,
+    }))
+    .catch(error => console.error(error))   
+}
+
+  
+  render() {
         return(
             <>
             {!this.props.filtered ? 
@@ -137,6 +150,8 @@ fetchNext= (newId)=> {
         nextSongId={this.state.nextSongId}
         fetchNext={this.fetchNext}
         fetchPrevious={this.fetchPrevious}
+        songs={this.props.songs}
+        handleShuffle={this.handleShuffle}
         />
 
     </>

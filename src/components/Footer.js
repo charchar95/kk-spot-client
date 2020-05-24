@@ -1,5 +1,5 @@
 import React, {Component, } from 'react';
-import { FaPlayCircle, FaPauseCircle, FaForward, FaBackward } from 'react-icons/fa';
+import { FaPlayCircle, FaPauseCircle, FaForward, FaBackward, FaRandom } from 'react-icons/fa';
 
 class Footer extends Component { 
   constructor(props) {
@@ -11,6 +11,7 @@ class Footer extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.playAudio = this.playAudio.bind(this);
     this.pauseAudio = this.pauseAudio.bind(this);
+    this.shuffleSongs = this.shuffleSongs.bind(this);
   }
 
   playNext () {
@@ -62,6 +63,27 @@ class Footer extends Component {
     }
   }
 
+
+ shuffleSongs = (arr) => {
+   // create a new array to not mess with this.state.song array
+   let newArr = arr.filter(song => song.id > 0 )
+    var ctr = newArr.length, temp, index;
+    // While there are elements in the array
+    while (ctr > 0) {
+    // Pick a random index
+        index = Math.floor(Math.random() * ctr);
+    // Decrease ctr by 1
+        ctr--;
+    // And swap the last element with it
+        temp = newArr[ctr];
+        newArr[ctr] = newArr[index];
+        newArr[index] = temp;
+    }
+    this.props.handleShuffle(newArr)
+    return newArr;
+  }
+
+
     render () {
         
         return (
@@ -75,6 +97,16 @@ class Footer extends Component {
                     // controls
                     src={this.props.currentlyPlaying.source} >
                 </audio>
+                <FaRandom
+                  onClick={() => this.shuffleSongs(this.props.songs)}
+                    size='27px'
+                    style={{ 
+                    color: 'black',
+                    margin: '5px' ,
+                    display: 'inline-block',
+                    verticalAlign: 'middle'
+                    }}
+                    />
                 <FaBackward
                   onClick={()=> this.playPrevious(this.props.nextSongId)}
                     size='27px'
