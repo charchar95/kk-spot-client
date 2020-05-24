@@ -83,10 +83,10 @@ main {
   grid-area: content;
 }
 
-
+/* 
 * {
   border: green solid 1px;
-}
+} */
 
 @media (max-width: 768px) {
   .app {

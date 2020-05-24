@@ -13,7 +13,7 @@ class Index  extends React.Component {
         showModal: 0
     }
 
-    playSong (itemID) {
+    playSong = (itemID) => {
       console.log(itemID)
         fetch(`http://localhost:3000/songs/${itemID}`)
         .then(response => response.json())
@@ -84,6 +84,8 @@ fetchNext= (newId)=> {
                   name={song.name}
                   genre={song.genre}
                   mood={song.mood}
+                  playSong={()=> this.playSong(song.id)}
+                  songid={song.id}
                       />
           </div>
     </div>
@@ -118,6 +120,8 @@ fetchNext= (newId)=> {
                   name={song.name}
                   genre={song.genre}
                   mood={song.mood}
+                  playSong={()=> this.playSong(song.id)}
+                  songid={song.id}
                       />
           </div>
    
