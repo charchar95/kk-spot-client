@@ -101,7 +101,7 @@ class Footer extends Component {
                   onClick={() => this.shuffleSongs(this.props.songs)}
                     size='27px'
                     style={{ 
-                    color: 'black',
+                    color: 'rgb(175,111,9)',
                     margin: '5px' ,
                     display: 'inline-block',
                     verticalAlign: 'middle'
@@ -111,7 +111,7 @@ class Footer extends Component {
                   onClick={()=> this.playPrevious(this.props.nextSongId)}
                     size='27px'
                     style={{ 
-                    color: 'black',
+                    color: 'rgb(175,111,9)',
                     margin: '5px' ,
                     display: 'inline-block',
                     verticalAlign: 'middle'
@@ -122,7 +122,7 @@ class Footer extends Component {
                   onClick={this.handleClick} 
                     size='27px'
                     style={{ 
-                    color: 'black',
+                    color: 'rgb(175,111,9)',
                     margin: '5px' ,
                     display: 'inline-block',
                     verticalAlign: 'middle'
@@ -133,7 +133,7 @@ class Footer extends Component {
                   onClick={this.handleClick} 
                     size='27px'
                     style={{ 
-                    color: 'black',
+                    color: 'rgb(175,111,9)',
                     margin: '5px' ,
                     display: 'inline-block',
                     verticalAlign: 'middle'
@@ -144,7 +144,7 @@ class Footer extends Component {
                   onClick={()=> this.playNext(this.props.nextSongId)}
                     size='27px'
                     style={{ 
-                    color: 'black',
+                    color: 'rgb(175,111,9)',
                     margin: '5px' ,
                     display: 'inline-block',
                     verticalAlign: 'middle'

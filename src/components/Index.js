@@ -76,18 +76,19 @@ fetchNext= (newId)=> {
               <div className="box" key={song.id}>
                 
                   <img className='image' src={song.album} width="100px" height="100px" alt={song.name} onClick={()=> this.playSong(song.id)}></img>
+                  <h4>{song.name}</h4> <br></br>
                  <div className="middle">
                   <FaPlay
                       onClick={()=> this.playSong(song.id)} 
                       size='25px'
                       style={{ 
-                        color: 'rgb(239,167,167)',
+                        color: 'rgb(175,111,9)',
                       }}
                     />
                   </div>
-                  <button className="open" onClick={() => this.getModal(song.id)}> See More </button>
+                  <button className="open" onClick={() => this.getModal(song.id)}> More </button>
                  <Likes />
-                  <p>{song.name}</p>
+                  
         <div>
         
               <Modal 
@@ -116,12 +117,12 @@ fetchNext= (newId)=> {
                     onClick={()=> this.playSong(song.id)} 
                     size='17px'
                     style={{ 
-                      color: 'rgb(239,167,167)',
+                      color: 'rgb(175,111,9)',
                       margin: '5px' ,
                   }}
                   />
                  </div>
-                 <button  onClick={() => this.getModal(song.id)}> See More </button>
+                 <button  className="open"  onClick={() => this.getModal(song.id)}> More </button>
                   <Likes /> 
                   <p>{song.name}</p>
               <div>

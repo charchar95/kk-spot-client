@@ -38,7 +38,9 @@ handleDropDown = (arr)=> {
       <div className="container">
     
           <header> 
-            <h1>KK Spot</h1>
+            <div className="hbox">
+              <h1>KK Spot</h1>
+            </div>
             <img src="https://i.imgur.com/U1zxNlO.png" width="50px" height="50px" alt="kk slider"></img>
             </header>
             <nav className="nav">
