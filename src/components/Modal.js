@@ -17,7 +17,7 @@ class Modal extends Component {
                     onClick={(songid)=> this.props.playSong(songid)}
                     size='30px'
                     style={{ 
-                      color: 'rgb(239,167,167)',
+                      color: 'rgb(175,111,9)',
                       margin: '5px',
                       display: 'inline-block'
                   }}
@@ -29,7 +29,7 @@ class Modal extends Component {
                 <h2>Genre:</h2><h3> {this.props.genre}</h3><br></br>
                 <h2>Mood: </h2><h3>{this.props.mood}</h3><br></br>
             </div>
-            <button onClick={this.props.onHide}>X</button>
+            <button className='open' onClick={this.props.onHide}>X</button>
           </div>
         )}
       </>

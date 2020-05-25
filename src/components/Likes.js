@@ -21,7 +21,7 @@ class Likes extends Component {
                     size='17px'
                     id='heart'
                     style={{ 
-                        color: 'rgb(175,111,9)',
+                        color: 'rgb(255,255,203)',
                         margin: '5px' ,
                         display: 'inline-block',
                         verticalAlign: 'middle',
@@ -33,7 +33,7 @@ class Likes extends Component {
                     size='17px'
                     id='brokenheart'
                     style={{ 
-                        color: 'rgb(175,111,9)',
+                        color: 'rgb(255,255,203)',
                         margin: '5px' ,
                         display: 'inline-block',
                         verticalAlign: 'middle',

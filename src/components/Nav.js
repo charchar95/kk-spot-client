@@ -21,19 +21,20 @@ class Nav extends Component {
     render () {
         return (
             <>
-            <div className="home">
+            {/* <div className="home"> */}
           <FaHome 
              size='25px'
              style={{ 
-             color: 'black',
-             margin: '5px' ,
-             display: 'block',
-             verticalAlign: 'middle'
+                color: 'black',
+                position: "relative",
+                marginRight: '10px',
+                marginTop: '18%',
+                float: 'left',
            }}
           
           />  
           <h2 onClick={this.returnHome}>Home</h2> 
-          </div>
+          {/* </div> */}
             <Dropdown
                 songs={this.props.songs}
                 handleDropDown={this.props.handleDropDown}

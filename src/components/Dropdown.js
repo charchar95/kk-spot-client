@@ -199,41 +199,41 @@ filterGenreClassical = ()=> {
     <div  className="dropdown">
         
          <div className="mood" onClick={this.showDropdownMenuMood}>Pick A Mood</div>
-
+            <hr className='hr'></hr>
           { this.state.displayMenuMood ? (
-          <ul>
-         <li onClick={this.filterMoodGrumpy}>Grumpy</li>
-         <li onClick={this.filterMoodSad}>Sad</li>
-         <li onClick={this.filterMoodLazy}>Lazy</li>
-         <li onClick={this.filterMoodGood}>Good</li>
-         <li onClick={this.filterMoodHard}>Hard to Say</li>
-          </ul>
+              <>
+         <p onClick={this.filterMoodGrumpy}>Grumpy</p>
+         <p onClick={this.filterMoodSad}>Sad</p>
+         <p onClick={this.filterMoodLazy}>Lazy</p>
+         <p onClick={this.filterMoodGood}>Good</p>
+         <p onClick={this.filterMoodHard}>Hard to Say</p>
+        </>
         ):
         (
           null
         )
         }
         <div className="genre" onClick={this.showDropdownMenuGenre}>Pick A Genre</div>
-
+            <hr className='hr'></hr>
             { this.state.displayMenuGenre ? (
-            <ul>
-            <li onClick={this.filterGenreWorld}>World</li>
-            <li onClick={this.filterGenreBeach}>Beach</li>
-            <li onClick={this.filterGenreMarch}>March</li>
-            <li onClick={this.filterGenreRagtime}>Country</li>
-            <li onClick={this.filterGenreLove}>Love</li>
-            <li onClick={this.filterGenreDance}>Dance</li>
-            <li onClick={this.filterGenreMinimalist}>Minimalist</li>
-            <li onClick={this.filterGenreRock}>Rock</li>
-            <li onClick={this.filterGenreAmbient}>Ambient</li>
-            <li onClick={this.filterGenreWaltz}>Waltz</li>
-            <li onClick={this.filterGenreBallad}>Ballad</li>
-            <li onClick={this.filterGenreFunk}>Funk</li>
-            <li onClick={this.filterGenreSoundtrack}>Soundtrack</li>
-            <li onClick={this.filterGenreJazz}>Jazz</li>
-            <li onClick={this.filterGenreFolk}>Folk</li>
-            <li onClick={this.filterGenreClassical}>Classical</li>
-            </ul>
+            <>
+            <p onClick={this.filterGenreWorld}>World</p>
+            <p onClick={this.filterGenreBeach}>Beach</p>
+            <p onClick={this.filterGenreMarch}>March</p>
+            <p onClick={this.filterGenreRagtime}>Country</p>
+            <p onClick={this.filterGenreLove}>Love</p>
+            <p onClick={this.filterGenreDance}>Dance</p>
+            <p onClick={this.filterGenreMinimalist}>Minimalist</p>
+            <p onClick={this.filterGenreRock}>Rock</p>
+            <p onClick={this.filterGenreAmbient}>Ambient</p>
+            <p onClick={this.filterGenreWaltz}>Waltz</p>
+            <p onClick={this.filterGenreBallad}>Ballad</p>
+            <p onClick={this.filterGenreFunk}>Funk</p>
+            <p onClick={this.filterGenreSoundtrack}>Soundtrack</p>
+            <p onClick={this.filterGenreJazz}>Jazz</p>
+            <p onClick={this.filterGenreFolk}>Folk</p>
+            <p onClick={this.filterGenreClassical}>Classical</p>
+            </>
             ):
             (
             null
