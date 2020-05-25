@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 import Nav from './components/Nav';
 import Index from './components/Index';
-
-
+import './fonts/FinkHeavy.ttf'
+import './fonts/FOT-Seurat-Pro-B.otf'
 
 class App extends React.Component {
   state = {

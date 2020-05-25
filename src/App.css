@@ -87,10 +87,10 @@ main {
   grid-area: content;
 }
 
-/* 
+
 * {
-  border: green solid 1px;
-} */
+  font-family: FOT-Seurat Pro B;
+}
 
 @media (max-width: 768px) {
   .app {
@@ -216,4 +216,9 @@ nav, .image {
   margin-right: 1%;
   float: right
   
+}
+
+h1 {
+  font-family: FOT-Seurat Pro B ;
+  font-weight: 700;
 }
