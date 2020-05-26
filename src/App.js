@@ -25,7 +25,7 @@ handleDropDown = (arr)=> {
 
 
   getSongs () {
-    fetch('http://localhost:3000/songs')
+    fetch('https://kk-spot-api.herokuapp.com/songs')
     .then(response => response.json())
     .then(json => this.setState({ songs: json }))
     .catch(error => console.error(error))

@@ -15,7 +15,7 @@ class Index  extends React.Component {
 
     playSong = (itemID) => {
       console.log(itemID)
-        fetch(`http://localhost:3000/songs/${itemID}`)
+        fetch(`https://kk-spot-api.herokuapp.com/songs/${itemID}`)
         .then(response => response.json())
         .then(json => this.setState({ 
             currentlyPlaying: json,
@@ -25,7 +25,7 @@ class Index  extends React.Component {
     }
 
 fetchNext= (newId)=> {
-    fetch(`http://localhost:3000/songs/${newId}`)
+    fetch(`https://kk-spot-api.herokuapp.com/songs/${newId}`)
     .then(response => response.json())
     .then(json => this.setState({ 
         currentlyPlaying: json,
@@ -55,7 +55,7 @@ fetchNext= (newId)=> {
   handleShuffle = (arr)=> {
    let itemID = arr[0].id
     console.log(itemID)
-    fetch(`http://localhost:3000/songs/${itemID}`)
+    fetch(`https://kk-spot-api.herokuapp.com/songs/${itemID}`)
     .then(response => response.json())
     .then(json => this.setState({ 
         currentlyPlaying: json,
