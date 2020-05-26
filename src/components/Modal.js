@@ -17,7 +17,7 @@ class Modal extends Component {
                     onClick={(songid)=> this.props.playSong(songid)}
                     size='30px'
                     style={{ 
-                      color: 'rgb(175,111,9)',
+                      color: 'rgb(203,160,137)',
                       margin: '5px',
                       display: 'inline-block'
                   }}
