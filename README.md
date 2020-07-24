@@ -10,6 +10,9 @@ This project uses React on Ruby on Rails, Postgres, Faker, the Animal Crossing N
 ## Heroku Link 
 https://kk-spot.herokuapp.com/
 
+## Back End Link
+https://github.com/charchar95/kk-spot-api
+
 
 ## Future Project Plans
 * Likes send an update to the backend
